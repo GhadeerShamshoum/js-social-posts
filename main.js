@@ -97,7 +97,7 @@ document.getElementById('container').innerHTML+=` <div class="post">
 <div class="post__header">
     <div class="post-meta">                    
         <div class="post-meta__icon">
-            <img class="profile-pic" src="${ posts[i].author.image}" alt="${posts[i].author.name}">                    
+            <img class="profile-pic" src="${ posts[i].author.image}" alt="${firstLetters ()}">                    
         </div>
         <div class="post-meta__data">
             <div class="post-meta__author">${posts[i].author.name}</div>
@@ -118,7 +118,7 @@ document.getElementById('container').innerHTML+=` <div class="post">
             </a>
         </div>
         <div class="likes__counter">
-            Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone
+            Piace a <b id="like-counter-${i}" class="js-likes-counter">${posts[i].likes}</b> persone
         </div>
     </div> 
 </div>            
@@ -136,11 +136,21 @@ for(i=0; i<posts.length; i++){
         
     }
     postsContainer()
-    console.log(posts[i].author.image)
+    firstLetters ()
+    console.log(posts[i].author.image);
+}
+
+function firstLetters (){
+    let name = posts[i].author.name;
+    console.log(name.split('')[0].split("")[0], name.split('')[1]);
+    
+
+
 }
 
 const likeBtn = document.getElementsByClassName('like-button');
-let count = document.getElementById('like-counter-1');
+
+
 
 
 for(let i=0; i< posts.length; i++){
@@ -150,13 +160,13 @@ let clicked = false;
     likeBtn[i].addEventListener("click", function(){
         if(!clicked){
             clicked = true;
-            this.classList.add("like-button--liked");
-            count.textContent++;
+            likeBtn[i].classList.add("like-button--liked");
+            document.getElementById(`like-counter-${i}`).textContent ++;
     
         }else{
             clicked = false;
-            this.classList.remove("like-button--liked");
-            count.textContent--;
+            likeBtn[i].classList.remove("like-button--liked");
+            document.getElementById(`like-counter-${i}`).textContent --;
     
         }
     })
