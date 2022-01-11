@@ -85,15 +85,19 @@ const posts = [
 ];
 function postsContainer(){
 
+    
+
     let created = posts[i].created;
     let changeDate =  created.split("-");
     let newDate = changeDate[2]+"-"+ changeDate[1]+"-"+changeDate[0];
+
+    
 
 document.getElementById('container').innerHTML+=` <div class="post">
 <div class="post__header">
     <div class="post-meta">                    
         <div class="post-meta__icon">
-            <img class="profile-pic" src="${posts[i].author.image}" alt="${posts[i].author.name}">                    
+            <img class="profile-pic" src="${ posts[i].author.image}" alt="${posts[i].author.name}">                    
         </div>
         <div class="post-meta__data">
             <div class="post-meta__author">${posts[i].author.name}</div>
@@ -108,7 +112,7 @@ document.getElementById('container').innerHTML+=` <div class="post">
 <div class="post__footer">
     <div class="likes js-likes">
         <div class="likes__cta">
-            <a class="like-button  js-like-button" href="#" data-postid="${posts[i].id}" >
+            <a class="like-button  js-like-button" href="#!" data-postid="${posts[i].id}" >
                 <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                 <span class="like-button__label">Mi Piace</span>
             </a>
@@ -126,9 +130,14 @@ document.getElementById('container').innerHTML+=` <div class="post">
 //click-like button
 }
 for(i=0; i<posts.length; i++){
+    
+    if(posts[i].author.image==null){
+        posts[i].author.image='https://i.picsum.photos/id/831/300/300.jpg?hmac=rOb_4UPQBeuEgrJON2yaO31CcDAsYAlTST77RIVz1W0'
+        
+    }
     postsContainer()
+    console.log(posts[i].author.image)
 }
-
 
 const likeBtn = document.getElementsByClassName('like-button');
 let count = document.getElementById('like-counter-1');
