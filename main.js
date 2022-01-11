@@ -83,9 +83,11 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
-
-
 function postsContainer(){
+
+    let created = posts[i].created;
+    let changeDate =  created.split("-");
+    let newDate = changeDate[2]+"-"+ changeDate[1]+"-"+changeDate[0];
 
 document.getElementById('container').innerHTML+=` <div class="post">
 <div class="post__header">
@@ -95,7 +97,7 @@ document.getElementById('container').innerHTML+=` <div class="post">
         </div>
         <div class="post-meta__data">
             <div class="post-meta__author">${posts[i].author.name}</div>
-            <div class="post-meta__time">4 mesi fa</div>
+            <div class="post-meta__time">${newDate}</div>
         </div>                    
     </div>
 </div>
@@ -106,7 +108,7 @@ document.getElementById('container').innerHTML+=` <div class="post">
 <div class="post__footer">
     <div class="likes js-likes">
         <div class="likes__cta">
-            <a class="like-button  js-like-button" href="#" data-postid="1">
+            <a class="like-button  js-like-button" href="#" data-postid="1" ${posts[i].id}>
                 <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                 <span class="like-button__label">Mi Piace</span>
             </a>
@@ -121,5 +123,5 @@ document.getElementById('container').innerHTML+=` <div class="post">
 
 for(i=0; i<posts.length; i++){
     postsContainer()
-
 }
+
