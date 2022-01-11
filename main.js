@@ -108,7 +108,7 @@ document.getElementById('container').innerHTML+=` <div class="post">
 <div class="post__footer">
     <div class="likes js-likes">
         <div class="likes__cta">
-            <a class="like-button  js-like-button" href="#" data-postid="1" ${posts[i].id}>
+            <a class="like-button  js-like-button" href="#" data-postid="${posts[i].id}" >
                 <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                 <span class="like-button__label">Mi Piace</span>
             </a>
@@ -119,9 +119,38 @@ document.getElementById('container').innerHTML+=` <div class="post">
     </div> 
 </div>            
 </div>`
-}
 
+
+
+
+//click-like button
+}
 for(i=0; i<posts.length; i++){
     postsContainer()
 }
+
+
+const likeBtn = document.getElementsByClassName('like-button');
+let count = document.getElementById('like-counter-1');
+
+
+for(let i=0; i< posts.length; i++){
+
+let clicked = false;
+
+    likeBtn[i].addEventListener("click", function(){
+        if(!clicked){
+            clicked = true;
+            this.classList.add("like-button--liked");
+            count.textContent++;
+    
+        }else{
+            clicked = false;
+            this.classList.remove("like-button--liked");
+            count.textContent--;
+    
+        }
+    })
+}
+
 
