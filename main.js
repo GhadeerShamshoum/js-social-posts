@@ -136,13 +136,16 @@ for(i=0; i<posts.length; i++){
         
     }
     postsContainer()
-    firstLetters ()
+    
     console.log(posts[i].author.image);
 }
 
 function firstLetters (){
-    let name = posts[i].author.name;
-    console.log(name.split('')[0].split("")[0], name.split('')[1]);
+    const fullName = posts[i].author.name.split(' ');
+    const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
+    console.log(initials)
+    return initials.toUpperCase();
+   
     
 
 
